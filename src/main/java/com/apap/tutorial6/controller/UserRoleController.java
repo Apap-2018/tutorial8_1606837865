@@ -40,16 +40,16 @@ public class UserRoleController {
 			
 			if(passwordEncoder.matches(password.getPasswordLama(), user.getPassword())) {
 				userService.ubahPassword(user, password.getPasswordBaru());
-				msg = "Password Berhasil Diubah";
+				msg = "Sukses";
 			}else {
-				msg = "Password Lama Salah";
+				msg = "NotMatch";
 			}
 			
 		}else {
-			msg = "Password Tidak Sama";
+			msg = "Failed";
 		}
 		
-		
-		return "password-success";
+		model.addAttribute("message", msg);
+		return "password";
 	}
 }
